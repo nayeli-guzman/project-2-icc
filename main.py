@@ -1,6 +1,9 @@
 import functions as fn
 import pandas as pd
 from sklearn import datasets
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
 
 # load info
 
@@ -33,6 +36,13 @@ for i in range(totalDigits):
 # calculate average matrix
 for i in range(amount):
     meanNumbers[i] = fn.meanMatrix(numbers[i])
+
+for i in range(amount):
+    plt.figure(figsize=(3, 3))  # Tamaño de la figura
+    sns.heatmap(meanNumbers[i], annot=False, cmap="Blues", cbar=True)
+    plt.title(f"Matriz promedio de: {i}")
+    plt.show()
+
 
 print(meanNumbers)
 

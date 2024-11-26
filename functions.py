@@ -14,7 +14,6 @@ def meanMatrix(arrayMatrix, size:int = 8):
     
     response = [[int(response[i][j] // len(arrayMatrix)) for j in range(size)] for i in range(size)]
 
-
     return response
 
 
