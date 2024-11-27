@@ -1,3 +1,8 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import cv2
+
 
 def createMatrix(size : int = 10):
     matrix = [[] for _ in range(size)]
@@ -16,4 +21,22 @@ def meanMatrix(arrayMatrix, size:int = 8):
 
     return response
 
+def showMatrix(idx:int, matrix):
+    plt.figure(figsize=(3, 3))
+    sns.heatmap(matrix[idx], annot=False, cmap="Blues", cbar=True)
+    plt.title(f"Matriz promedio de: {idx}")
+    plt.show()
 
+
+def loadImage(number : int):
+
+    path = f"assets/{number}.png"
+    
+    img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+    newImg = cv2.resize(img, (8, 8))
+
+    for y in range(8):
+        for x in range(8):
+            newImg[y][x] = (255 - newImg[y][x]) * 16 / 255
+
+    return newImg

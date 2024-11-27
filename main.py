@@ -1,9 +1,8 @@
 import functions as fn
 import pandas as pd
+import cv2
 from sklearn import datasets
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
+
 
 # load info
 
@@ -38,13 +37,15 @@ for i in range(amount):
     meanNumbers[i] = fn.meanMatrix(numbers[i])
 
 for i in range(amount):
-    plt.figure(figsize=(3, 3))  # Tamaño de la figura
-    sns.heatmap(meanNumbers[i], annot=False, cmap="Blues", cbar=True)
-    plt.title(f"Matriz promedio de: {i}")
-    plt.show()
-
+    fn.showMatrix(i, meanNumbers)
 
 print(meanNumbers)
+
+
+# falta tener todos los png's en assests
+number = int(input("Ingresa el numero de la imagen que deseas analizar: "))
+
+fn.loadImage(number)
 
 
 # temporal
@@ -59,3 +60,16 @@ for i in range(1,amount):
 
 
 df.to_csv("numbers.csv")
+
+
+# p3
+
+
+
+"""miMatriz = cv2.imread("C:/Users/nayel/Desktop/utec/ciclo/ICC/project-2-icc/assets/numero_de_prueba.png", cv2.IMREAD_GRAYSCALE)
+imagen_pequena = cv2.resize(miMatriz, (8, 8))
+print(imagen_pequena)
+
+for i in range(8):
+    for j in range(8):
+        imagen_pequena[i][j] = imagen_pequena[i][j]*255/16"""
