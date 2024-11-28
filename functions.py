@@ -34,9 +34,6 @@ def loadImage(number : int):
     img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
     newImg = cv2.resize(img, (8, 8))
 
-    print(newImg)
-
-
     for y in range(8):
         for x in range(8):
             newImg[y][x] = (255 - newImg[y][x]) / 255*16
