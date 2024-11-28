@@ -68,16 +68,6 @@ knn = KNN(img, 3)
 # Clasificación del nuevo dígito
 
 neighbors_list = knn.findKNeighbors2(data,target)
-knn_neighbors = {}
-i = 0
-while True:
-    knn_neighbors[neighbors_list[i]] += 1
-    if knn_neighbors[neighbors_list[i]] > 1:
-        print("Soy la inteligencia artificial,y he detectado que el dígito ingresado corresponde al número ",neighbors_list[i])
-        break
-    i += 1
-
-
 
 # temporal
 
@@ -91,7 +81,6 @@ for i in range(1,amount):
 
 
 # df.to_csv("numbers.csv")
-
 
 # p3
 
