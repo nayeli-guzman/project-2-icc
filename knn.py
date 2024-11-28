@@ -11,6 +11,8 @@ class KNN:
 
     def findKNeighbors(self, data, target):
 
+        self.distances = []
+
         for i in range(len(data)):
             value = self.__euclideanDistance(data[i])
             self.distances.append((value, target[i]))
