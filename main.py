@@ -50,16 +50,8 @@ for i in range(amount):
 print("\n...\n")
 print("Matrices promedios calculadas con éxito!")
 
-# for i in range(10):
-#     fn.showMatrix(i, meanNumbers)
-
-# idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
-#
-# while(idx!=0):
-#     if (idx < 0 or idx >= amount):
-#         idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
-#     else:
-#         fn.showMatrix(i, meanNumbers)
+for i in range(10):
+    fn.showMatrix(i, meanNumbers)
 
 
 # print(meanNumbers)
@@ -73,9 +65,6 @@ knn = KNN(img, 3)
 print("Los 3 knn son")
 print(knn.findKNeighbors(data, target))
 
-
-'''
-# -----------------F---------------
 
 # ----------------G---------------
 # Transforming meanNumbers into lists
