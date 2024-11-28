@@ -25,17 +25,25 @@ class KNN:
 
     def findKNeighbors2(self, data, target):
 
-        distances = []
+        self.distances = []
 
         for i in range(len(data)):
             value = self.__euclideanDistance(data[i])
-            distances.append((value, target[i]))
+            self.distances.append((value, target[i]))
 
-        distances = sorted(distances)
-        lista_neighbors = [distances[i][0] for i in range(len(distances))]
+        self.distances = sorted(self.distances)
+        lista_neighbors = [self.distances[i][1] for i in range(len(self.distances))]
 
-        return lista_neighbors
-
+        knn_neighbors = {}
+        i = 0
+        while True:
+            knn_neighbors[lista_neighbors[i]] += 1
+            if knn_neighbors[lista_neighbors[i]] > 1:
+                print("Soy la inteligencia artificial, y he detectado que el dígito ingresado corresponde al número ", lista_neighbors[i])
+                break
+            i += 1
+        return None
+    
     def __euclideanDistance(self, matrix):
         acum = 0
         for index in range(0, len(self.img)):
