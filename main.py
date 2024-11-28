@@ -23,6 +23,8 @@ images = digits["images"]
 amount = 10
 totalDigits = len(digits["target"])
 
+print("Hallando las matrices promedio...")
+
 # create an empty matrix
 numbers = fn.createMatrix(amount)
 
@@ -37,10 +39,19 @@ for i in range(totalDigits):
 for i in range(amount):
     meanNumbers[i] = fn.meanMatrix(numbers[i])
 
-for i in range(amount): # should be amount
-    fn.showMatrix(i, meanNumbers)
+print("\n...\n")
+print("Matrices promedios calculadas con éxito!")
 
-print(meanNumbers)
+idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
+
+while(idx!=0):
+    if (idx < 0 or idx >= amount):
+        idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
+    else:
+        fn.showMatrix(i, meanNumbers)
+
+
+# print(meanNumbers)
 
 
 # falta tener todos los png's en assests
