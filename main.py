@@ -1,6 +1,7 @@
 import functions as fn
 import pandas as pd
 import cv2
+from knn import KNN
 from sklearn import datasets
 
 
@@ -36,16 +37,21 @@ for i in range(totalDigits):
 for i in range(amount):
     meanNumbers[i] = fn.meanMatrix(numbers[i])
 
-for i in range(amount):
+"""
+for i in range(1): # should be amount
     fn.showMatrix(i, meanNumbers)
 
 print(meanNumbers)
-
+"""
 
 # falta tener todos los png's en assests
 number = int(input("Ingresa el numero de la imagen que deseas analizar: "))
 
-fn.loadImage(number)
+img =fn.loadImage(number)
+
+knn = KNN(img, 3)
+
+print(knn.findKNeighbors(data, target))
 
 
 # temporal

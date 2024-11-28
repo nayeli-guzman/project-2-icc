@@ -27,16 +27,19 @@ def showMatrix(idx:int, matrix):
     plt.title(f"Matriz promedio de: {idx}")
     plt.show()
 
-
 def loadImage(number : int):
 
     path = f"assets/{number}.png"
+
+    print(path)
     
     img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
     newImg = cv2.resize(img, (8, 8))
 
+    print(2)
+
     for y in range(8):
         for x in range(8):
-            newImg[y][x] = (255 - newImg[y][x]) * 16 / 255
+            newImg[y][x] = (255 - newImg[y][x]) / 255*16
 
     return newImg
