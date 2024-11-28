@@ -50,6 +50,9 @@ for i in range(amount):
 print("\n...\n")
 print("Matrices promedios calculadas con éxito!")
 
+for i in range(1):
+    fn.showMatrix(i, meanNumbers)
+
 # idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
 #
 # while(idx!=0):
@@ -66,6 +69,11 @@ print("Matrices promedios calculadas con éxito!")
 number = int(input("Ingresa el numero de la imagen que deseas analizar: "))
 
 img =fn.loadImage(number)
+
+knn = KNN(img, 3)
+print(knn.findKNeighbors(data, target))
+
+"""
 img_en_lista = ImagetoList(img)
 # -----------------F---------------
 digit_prediction = fn2.findKNeighbors2(img_en_lista,data,target)
@@ -98,9 +106,7 @@ for i in range(8):
 
 
 
-# knn = KNN(img, 3)
-
-# print(knn.findKNeighbors(data, target))
+# 
 
 # Clasificación del nuevo dígito
 
@@ -122,7 +128,7 @@ for i in range(1,amount):
 
 # p3
 
-
+"""
 
 """miMatriz = cv2.imread("C:/Users/nayel/Desktop/utec/ciclo/ICC/project-2-icc/assets/numero_de_prueba.png", cv2.IMREAD_GRAYSCALE)
 imagen_pequena = cv2.resize(miMatriz, (8, 8))
