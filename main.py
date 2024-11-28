@@ -29,7 +29,9 @@ img_prueba_1_lista = ImagetoList(img_prueba_1)
 amount = 10
 totalDigits = len(digits["target"])
 
-print("Hallando las matrices promedio...")
+print("BIENVENIDO A LA INTELIGENCIA ARTIFICIAL")
+
+print("\nHallando las matrices promedio...")
 
 # create an empty matrix
 numbers = fn.createMatrix(amount)
@@ -78,6 +80,8 @@ for a in range(10):
 
 knn = KNN(img, 3)
 print("Los 3 vecinos más cercanos son: ",knn.findKNeighbors(data, target))
+
+
 img = ImagetoList(img)
 digit_prediction_1 = int(fn2.findKNeighbors2(img, data, target))
 print("Soy la inteligencia artificial, y he detectado que el dígito ingresado corresponde al número ",digit_prediction_1)

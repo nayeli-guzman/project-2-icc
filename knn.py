@@ -5,7 +5,6 @@ class KNN:
 
         self.k = k
         self.distances = []
-        print(img)
         self.img = [j for i in img for j in i]
 
 
