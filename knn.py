@@ -21,6 +21,19 @@ class KNN:
 
         return [int(first), int(second), int(third)]
 
+    def findKNeighbors2(self, data, target):
+
+        distances = []
+
+        for i in range(len(data)):
+            value = self.__euclideanDistance(data[i])
+            distances.append((value, target[i]))
+
+        distances = sorted(distances)
+        lista_neighbors = [distances[i][0] for i in range(len(distances))]
+
+        return lista_neighbors
+
     def __euclideanDistance(self, matrix):
         acum = 0
         for index in range(0, len(self.img)):
