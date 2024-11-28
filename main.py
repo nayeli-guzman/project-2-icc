@@ -1,59 +1,63 @@
 import functions as fn
+import functions2 as fn2
+import pandas as pd
+import cv2
+
+from functions import loadImage, ImagetoList
 from knn import KNN
 from sklearn import datasets
 
-import pandas as pd
 
 # load info
+
 digits = datasets.load_digits()
 
-"""
-print("Data:")
+"""print("Data:")
 print(digits["data"]) # matriz plana
 print("Target:")
 print(digits["target"]) # los numeros que representan
 print("Images:")
 print(digits["images"]) # matriz representativa
 """
-
 data = digits["data"]
 target = digits["target"]
 images = digits["images"]
 
-amount = 10 # [0,1,  ... , 9]
+img_prueba_1 = loadImage(1)
+img_prueba_1_lista = ImagetoList(img_prueba_1)
+
+amount = 10
 totalDigits = len(digits["target"])
 
 print("Hallando las matrices promedio...")
 
-# matriz para almacenar todas las n matrices  
-# que representan al número i en el indice i
+# create an empty matrix
 numbers = fn.createMatrix(amount)
 
-# lista donde se almacenarán las 
-# matrices promedio
+# create an empty list
 meanNumbers = [None] * amount
 
+# each cell has its own image numbers
 for i in range(totalDigits):
     numbers[target[i]].append(images[i])
 
+# calculate average matrix
 for i in range(amount):
     meanNumbers[i] = fn.meanMatrix(numbers[i])
+
+
 
 print("\n...\n")
 print("Matrices promedios calculadas con éxito!")
 
-for i in range(amount):
-    fn.showMatrix(i, meanNumbers)
+# idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
+#
+# while(idx!=0):
+#     if (idx < 0 or idx >= amount):
+#         idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
+#     else:
+#         fn.showMatrix(i, meanNumbers)
 
-"""
-idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
-
-while(idx!=0):
-    if (idx < 0 or idx >= amount):
-        idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
-    else:
-        fn.showMatrix(idx, meanNumbers)
-"""
 
 # print(meanNumbers)
 
@@ -62,14 +66,45 @@ while(idx!=0):
 number = int(input("Ingresa el numero de la imagen que deseas analizar: "))
 
 img =fn.loadImage(number)
+img_en_lista = ImagetoList(img)
+# -----------------F---------------
+digit_prediction = fn2.findKNeighbors2(img_en_lista,data,target)
+print("Soy la inteligencia artificial, y he detectado que el dígito ingresado corresponde al número ", digit_prediction)
 
-knn = KNN(img, 3)
+# ----------------G---------------
+# Transforming meanNumbers into lists
+mean_numbers_in_list = []
+for a in range(10):
+    meanNumber = []
+    for i in range(len(meanNumbers[0])):
+        for j in range(len(meanNumbers[0][0])):
+            meanNumber.append(meanNumbers[a][i][j])
+    mean_numbers_in_list.append(meanNumber)
+# Calculando distancia
+distance_list = []
+for i in range(10):
+    distance = fn2.distanciaEuclidiana(img_en_lista,mean_numbers_in_list[i]) #aqui quiero calcular la distancia euclidiana
+    distance_list.append(distance)
+menor = min(distance_list)
+print("Soy la inteligencia artificial versión 2, y he detectado que el dígito ingresado corresponde al número ",distance_list.index(menor))
+#-----------------------H-------------------------
+miMatrizImagen = cv2.imread("assets/5.png", cv2.IMREAD_GRAYSCALE)
+imagen_pequena = cv2.resize(miMatrizImagen, (8,8))
+imagen_pequena = 255-imagen_pequena
+# Reducirmos a entre 0 y 16
+for i in range(8):
+    for j in range(8):
+        imagen_pequena[i][j] = imagen_pequena[i][j]/255*16
+
+
+
+# knn = KNN(img, 3)
 
 # print(knn.findKNeighbors(data, target))
 
 # Clasificación del nuevo dígito
 
-knn.findKNeighbors2(data,target)
+# knn.findKNeighbors2(data,target)
 
 # temporal
 
@@ -83,6 +118,7 @@ for i in range(1,amount):
 
 
 # df.to_csv("numbers.csv")
+
 
 # p3
 

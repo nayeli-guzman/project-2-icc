@@ -14,7 +14,7 @@ class KNN:
         self.distances = []
 
         for i in range(len(data)):
-            value = self.__euclideanDistance(data[i])
+            value = self.euclideanDistance(data[i])
             self.distances.append((value, target[i]))
 
         self.distances = sorted(self.distances)
@@ -23,28 +23,8 @@ class KNN:
 
         return [int(first), int(second), int(third)]
 
-    def findKNeighbors2(self, data, target):
 
-        self.distances = []
-
-        for i in range(len(data)):
-            value = self.__euclideanDistance(data[i])
-            self.distances.append((value, target[i]))
-
-        self.distances = sorted(self.distances)
-        lista_neighbors = [self.distances[i][1] for i in range(len(self.distances))]
-
-        knn_neighbors = {}
-        i = 0
-        while True:
-            knn_neighbors[lista_neighbors[i]] += 1
-            if knn_neighbors[lista_neighbors[i]] > 1:
-                print("Soy la inteligencia artificial, y he detectado que el dígito ingresado corresponde al número ", lista_neighbors[i])
-                break
-            i += 1
-        return None
-    
-    def __euclideanDistance(self, matrix):
+    def euclideanDistance(self, matrix):
         acum = 0
         for index in range(0, len(self.img)):
             acum += (self.img[index] - matrix[index]) ** 2
