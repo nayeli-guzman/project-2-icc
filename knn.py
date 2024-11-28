@@ -14,7 +14,7 @@ class KNN:
         self.distances = []
 
         for i in range(len(data)):
-            value = self.__euclideanDistance(data[i])
+            value = self.euclideanDistance(data[i])
             self.distances.append((value, target[i]))
 
         self.distances = sorted(self.distances)
@@ -28,7 +28,7 @@ class KNN:
         self.distances = []
 
         for i in range(len(data)):
-            value = self.__euclideanDistance(data[i])
+            value = self.euclideanDistance(data[i])
             self.distances.append((value, target[i]))
 
         self.distances = sorted(self.distances)
@@ -43,8 +43,8 @@ class KNN:
                 break
             i += 1
         return None
-    
-    def __euclideanDistance(self, matrix):
+
+    def euclideanDistance(self, matrix):
         acum = 0
         for index in range(0, len(self.img)):
             acum += (self.img[index] - matrix[index]) ** 2

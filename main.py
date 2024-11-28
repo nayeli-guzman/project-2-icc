@@ -41,6 +41,17 @@ for i in range(totalDigits):
 for i in range(amount):
     meanNumbers[i] = fn.meanMatrix(numbers[i])
 
+# Transforming meanNumbers into lists
+mean_numbers_in_list = []
+for a in range(10):
+    meanNumber = []
+    for i in range(len(meanNumbers[0])):
+        for j in range(len(meanNumbers[0][0])):
+            meanNumber.append(meanNumbers[a][i][j])
+    mean_numbers_in_list.append(meanNumber)
+
+
+
 print("\n...\n")
 print("Matrices promedios calculadas con éxito!")
 
@@ -81,6 +92,7 @@ for i in range(1,amount):
 
 
 # df.to_csv("numbers.csv")
+
 
 # p3
 
