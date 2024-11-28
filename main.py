@@ -50,7 +50,7 @@ for i in range(amount):
 print("\n...\n")
 print("Matrices promedios calculadas con éxito!")
 
-# for i in range(1):
+# for i in range(10):
 #     fn.showMatrix(i, meanNumbers)
 
 # idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
@@ -65,13 +65,12 @@ print("Matrices promedios calculadas con éxito!")
 # print(meanNumbers)
 
 
-# falta tener todos los png's en assests
-# number = int(input("Ingresa el numero de la imagen que deseas analizar: "))
-#
-# img =fn.loadImage(number)
-#
-# knn = KNN(img, 3)
-# print(knn.findKNeighbors(data, target))
+number = int(input("Ingresa el numero de la imagen que deseas analizar: "))
+
+img =fn.loadImage(number)
+
+knn = KNN(img, 3)
+print("Los 3 vecinos más cercanos son: ",knn.findKNeighbors(data, target))
 
 
 
@@ -89,48 +88,27 @@ for a in range(10):
 # Calculando distancia
 
 #-----------------------H-------------------------
-for i in range(10):
-    img = ImagetoList(loadImage(i))
-    digit_prediction_1 = fn2.findKNeighbors2(img, data, target)
-    digit_prediction_2 = fn2.distancia_hacia_promedios(img, mean_numbers_in_list)
-    print("Digito: ",i)
-    print("Soy la inteligencia artificial, y he detectado que el dígito ingresado corresponde al número ",
-          digit_prediction_1)
-    print("Soy la inteligencia artificial versión 2, y he detectado que el dígito ingresado corresponde al número ",
-          digit_prediction_2)
-# print(meanNumbers[1])
-# print(mean_numbers_in_list[1])
+def resultados_generales():
+    print("-----RESULTADOS-----")
+    print(f"{'Dígito Introducido':<20} {'Predicción 1':<14} {'Predicción 2':<14}")
+    print("-" * 50)  # Línea separadora
 
+    for i in range(10):
+        img = ImagetoList(loadImage(i))
+        digit_prediction_1 = int(fn2.findKNeighbors2(img, data, target))
+        digit_prediction_2 = int(fn2.distancia_hacia_promedios(img, mean_numbers_in_list))
 
-# 
+        # Imprimir fila con las predicciones
+        print(f"{i:<20} {digit_prediction_1:<14} {digit_prediction_2:<14}")
 
-# Clasificación del nuevo dígito
+rpta = input("Mostrar los resultados generales? ")
+if rpta == "y":
+    resultados_generales()
 
-# knn.findKNeighbors2(data,target)
+# print("Digito: ",i)
+    # print("Soy la inteligencia artificial, y he detectado que el dígito ingresado corresponde al número ",
+    #       digit_prediction_1)
+    # print("Soy la inteligencia artificial versión 2, y he detectado que el dígito ingresado corresponde al número ",
+    #       digit_prediction_2)
 
-# temporal
-
-df = pd.DataFrame(data=meanNumbers[0])
-separador = pd.DataFrame(data=[[0, 0, 0, 0, 0, 0, 0 , 0]])
-df = pd.concat([df, separador], ignore_index=True)
-
-for i in range(1,amount):
- dft = pd.DataFrame(data=meanNumbers[i])
- df = pd.concat([df, dft, separador], ignore_index=True)
-
-
-# df.to_csv("numbers.csv")
-
-
-# p3
-
-
-
-"""miMatriz = cv2.imread("C:/Users/nayel/Desktop/utec/ciclo/ICC/project-2-icc/assets/numero_de_prueba.png", cv2.IMREAD_GRAYSCALE)
-imagen_pequena = cv2.resize(miMatriz, (8, 8))
-print(imagen_pequena)
-
-for i in range(8):
-    for j in range(8):
-        imagen_pequena[i][j] = imagen_pequena[i][j]*255/16"""
 

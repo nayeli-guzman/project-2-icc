@@ -4,10 +4,9 @@ def distanciaEuclidiana(img,lista):
         acum += (img[index] - lista[index]) ** 2
     return int(acum ** 0.5)
 
+
 def findKNeighbors2(img, data, target):
-
     distances = []
-
     for i in range(len(data)):
         value = distanciaEuclidiana(img,data[i])
         distances.append((value, target[i]))
@@ -15,18 +14,7 @@ def findKNeighbors2(img, data, target):
     distances = sorted(distances)
     lista_neighbors = [distances[i][1] for i in range(len(distances))]
 
-    knn_neighbors = {
-        0: 0,
-        1: 0,
-        2: 0,
-        3: 0,
-        4: 0,
-        5: 0,
-        6: 0,
-        7: 0,
-        8: 0,
-        9: 0,
-    }
+    knn_neighbors = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
     i = 0
     while True:
         knn_neighbors[lista_neighbors[i]] += 1
@@ -39,10 +27,7 @@ def findKNeighbors2(img, data, target):
 def distancia_hacia_promedios(img2,lista):
     distance_list = []
     for i in range(10):
-        distance = distanciaEuclidiana(img2,lista[i]) #aqui quiero calcular la distancia euclidiana
-        #print(img2)
-        #print(lista[i])
+        distance = distanciaEuclidiana(img2,lista[i])
         distance_list.append(distance)
     menor = min(distance_list)
-    print(distance_list)
     return distance_list.index(menor)
