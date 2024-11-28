@@ -4,21 +4,20 @@ class KNN:
     def __init__(self, img, k):
 
         self.k = k
+        self.distances = []
         print(img)
         self.img = [j for i in img for j in i]
 
 
     def findKNeighbors(self, data, target):
 
-        distances = []
-
         for i in range(len(data)):
             value = self.__euclideanDistance(data[i])
-            distances.append((value, target[i]))
+            self.distances.append((value, target[i]))
 
-        distances = sorted(distances)
+        self.distances = sorted(self.distances)
 
-        first, second, third = distances[0][1], distances[1][1], distances[2][1]
+        first, second, third = self.distances[0][1], self.distances[1][1], self.distances[2][1]
 
         return [int(first), int(second), int(third)]
 

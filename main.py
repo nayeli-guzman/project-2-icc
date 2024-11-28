@@ -37,12 +37,11 @@ for i in range(totalDigits):
 for i in range(amount):
     meanNumbers[i] = fn.meanMatrix(numbers[i])
 
-"""
-for i in range(1): # should be amount
+for i in range(amount): # should be amount
     fn.showMatrix(i, meanNumbers)
 
 print(meanNumbers)
-"""
+
 
 # falta tener todos los png's en assests
 number = int(input("Ingresa el numero de la imagen que deseas analizar: "))
@@ -52,6 +51,7 @@ img =fn.loadImage(number)
 knn = KNN(img, 3)
 
 print(knn.findKNeighbors(data, target))
+
 
 
 # temporal
