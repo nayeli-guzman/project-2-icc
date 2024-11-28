@@ -67,16 +67,8 @@ print("Matrices promedios calculadas con éxito!")
 
 number = int(input("Ingresa el numero de la imagen que deseas analizar: "))
 
-img =fn.loadImage(number)
+img = fn.loadImage(number)
 
-knn = KNN(img, 3)
-print("Los 3 vecinos más cercanos son: ",knn.findKNeighbors(data, target))
-
-
-
-# -----------------F---------------
-
-# ----------------G---------------
 # Transforming meanNumbers into lists
 mean_numbers_in_list = []
 for a in range(10):
@@ -85,9 +77,16 @@ for a in range(10):
         for j in range(len(meanNumbers[0][0])):
             meanNumber.append(meanNumbers[a][i][j])
     mean_numbers_in_list.append(meanNumber)
-# Calculando distancia
 
-#-----------------------H-------------------------
+knn = KNN(img, 3)
+print("Los 3 vecinos más cercanos son: ",knn.findKNeighbors(data, target))
+img = ImagetoList(img)
+digit_prediction_1 = int(fn2.findKNeighbors2(img, data, target))
+print("Soy la inteligencia artificial, y he detectado que el dígito ingresado corresponde al número ",digit_prediction_1)
+digit_prediction_2 = int(fn2.distancia_hacia_promedios(img, mean_numbers_in_list))
+print("Soy la inteligencia artificial versión 2, y he detectado que el dígito ingresado corresponde al número ",digit_prediction_2)
+
+# -----------------------H-------------------------
 def resultados_generales():
     print("-----RESULTADOS-----")
     print(f"{'Dígito Introducido':<20} {'Predicción 1':<14} {'Predicción 2':<14}")
@@ -100,6 +99,7 @@ def resultados_generales():
 
         # Imprimir fila con las predicciones
         print(f"{i:<20} {digit_prediction_1:<14} {digit_prediction_2:<14}")
+
 
 rpta = input("Mostrar los resultados generales? ")
 if rpta == "y":
