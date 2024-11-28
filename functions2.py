@@ -40,6 +40,8 @@ def distancia_hacia_promedios(img2,lista):
     distance_list = []
     for i in range(10):
         distance = distanciaEuclidiana(img2,lista[i]) #aqui quiero calcular la distancia euclidiana
+        #print(img2)
+        #print(lista[i])
         distance_list.append(distance)
     menor = min(distance_list)
     print(distance_list)

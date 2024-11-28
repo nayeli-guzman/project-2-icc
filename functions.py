@@ -48,6 +48,6 @@ def ImagetoList(img):
     img_en_lista = []
     for i in range(len(img)):
         for j in range(len(img[0])):
-            img_en_lista.append(img[i][j])
+            img_en_lista.append(int(img[i][j]))
     return img_en_lista
 
