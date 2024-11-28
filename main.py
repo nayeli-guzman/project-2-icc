@@ -50,8 +50,8 @@ for i in range(amount):
 print("\n...\n")
 print("Matrices promedios calculadas con éxito!")
 
-# for i in range(1):
-#     fn.showMatrix(i, meanNumbers)
+"""for i in range(amount):
+    fn.showMatrix(i, meanNumbers)"""
 
 # idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
 #
@@ -65,16 +65,16 @@ print("Matrices promedios calculadas con éxito!")
 # print(meanNumbers)
 
 
-# falta tener todos los png's en assests
-# number = int(input("Ingresa el numero de la imagen que deseas analizar: "))
-#
-# img =fn.loadImage(number)
-#
-# knn = KNN(img, 3)
-# print(knn.findKNeighbors(data, target))
+number = int(input("Ingresa el numero de la imagen que deseas analizar: "))
+img = fn.loadImage(number)
+
+knn = KNN(img, 3)
+
+print("Los 3 knn son")
+print(knn.findKNeighbors(data, target))
 
 
-
+'''
 # -----------------F---------------
 
 # ----------------G---------------
@@ -123,7 +123,7 @@ for i in range(1,amount):
 
 
 # p3
-
+'''
 
 
 """miMatriz = cv2.imread("C:/Users/nayel/Desktop/utec/ciclo/ICC/project-2-icc/assets/numero_de_prueba.png", cv2.IMREAD_GRAYSCALE)
