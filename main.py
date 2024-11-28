@@ -67,7 +67,7 @@ knn = KNN(img, 3)
 
 # Clasificación del nuevo dígito
 
-neighbors_list = knn.findKNeighbors2(data,target)
+knn.findKNeighbors2(data,target)
 
 # temporal
 
