@@ -1,57 +1,59 @@
 import functions as fn
-import pandas as pd
-import cv2
 from knn import KNN
 from sklearn import datasets
 
+import pandas as pd
 
 # load info
-
 digits = datasets.load_digits()
 
-"""print("Data:")
+"""
+print("Data:")
 print(digits["data"]) # matriz plana
 print("Target:")
 print(digits["target"]) # los numeros que representan
 print("Images:")
 print(digits["images"]) # matriz representativa
 """
+
 data = digits["data"]
 target = digits["target"]
 images = digits["images"]
 
-
-
-amount = 10
+amount = 10 # [0,1,  ... , 9]
 totalDigits = len(digits["target"])
 
 print("Hallando las matrices promedio...")
 
-# create an empty matrix
+# matriz para almacenar todas las n matrices  
+# que representan al número i en el indice i
 numbers = fn.createMatrix(amount)
 
-# create an empty list
+# lista donde se almacenarán las 
+# matrices promedio
 meanNumbers = [None] * amount
 
-# each cell has its own image numbers
 for i in range(totalDigits):
     numbers[target[i]].append(images[i])
 
-# calculate average matrix
 for i in range(amount):
     meanNumbers[i] = fn.meanMatrix(numbers[i])
 
 print("\n...\n")
 print("Matrices promedios calculadas con éxito!")
 
+for i in range(amount):
+    fn.showMatrix(i, meanNumbers)
+
+"""
 idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
 
 while(idx!=0):
     if (idx < 0 or idx >= amount):
         idx = int(input("Ingresa el numero de la matriz que quieres ver (0 para salir): "))
     else:
-        fn.showMatrix(i, meanNumbers)
-
+        fn.showMatrix(idx, meanNumbers)
+"""
 
 # print(meanNumbers)
 
