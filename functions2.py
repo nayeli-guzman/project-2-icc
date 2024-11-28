@@ -35,3 +35,12 @@ def findKNeighbors2(img, data, target):
             break
         i += 1
     return valor_predicho
+
+def distancia_hacia_promedios(img2,lista):
+    distance_list = []
+    for i in range(10):
+        distance = distanciaEuclidiana(img2,lista[i]) #aqui quiero calcular la distancia euclidiana
+        distance_list.append(distance)
+    menor = min(distance_list)
+    print(distance_list)
+    return distance_list.index(menor)
